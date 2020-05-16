@@ -1,4 +1,3 @@
-
 #bot = telegram.Bot('870389483:AAE6i7fBhPR88g_OL363CMx7_hp9KkUu3dQ')
 #!/usr/bin/python3
 from telegram.ext import Updater
@@ -68,7 +67,7 @@ def createListMenu(asistList):
     if person[1] == 'A':
       indicator = '🔴' 
     respList.append([InlineKeyboardButton(person[0]+' '+ indicator, callback_data=cbData)])
-  # respList.append("Enviar", callback_data="endAsist")
+  respList.append(([InlineKeyboardButton("Enviar",callback_data="endAsist")]))
   return respList
 
 
