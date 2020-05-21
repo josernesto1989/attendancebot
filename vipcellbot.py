@@ -94,6 +94,47 @@ def printAsistencia(update, context):
                         text=output)
 
 
+########################### GESTION DE USUARIOS #################################
+def addUser(update: Update, context: CallbackContext):
+  words = update.message['text'].split()
+  message = "Debe insertar el nombre del usuario"
+  if len(words)>1:    
+    x, words = words
+    words = ''.join(words)
+    if findInAsist(words):
+      message = "Ya existe el usuario \""+words+"\""
+    else:
+      asistencia.append([words,'A'])
+      message = "El usuario \""+words+"\" ha sido agregado"
+  update.message.reply_text(message)
+
+def findInAsist(user):
+  for i in asistencia:
+    if i[0] == user:
+      return True
+  return False
+
+def removeUser(update: Update, context: CallbackContext):
+  query = update.callback_query
+  words = update.message['text'].split()
+  message = "Debe insertar el nombre del usuario"
+  if len(words)>1:    
+    x, words = words
+    words = ''.join(words)
+    if findInAsist(words):
+      for i in range(len(asistencia)):
+        if asistencia[i][0] == words:
+          asistencia.pop(i)
+      message = "El usuario \""+words+"\" fue eliminado"
+    else:
+      message = "El usuario \""+words+"\" no existe"
+  update.message.reply_text(message)
+  
+
+
+
+    
+
 
 
 ############################# Handlers #########################################
@@ -105,6 +146,8 @@ dp.add_handler(CommandHandler('start', start))
 dp.add_handler(CommandHandler('asist', asist))
 dp.add_handler(CallbackQueryHandler(changeAsist, pattern='chAsist'))
 dp.add_handler(CallbackQueryHandler(printAsistencia, pattern='endAsist'))
+dp.add_handler(CommandHandler('adduser',addUser))
+dp.add_handler(CommandHandler('removeuser',removeUser))
 
 updater.start_polling()
 updater.idle()
