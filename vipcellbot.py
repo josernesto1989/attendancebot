@@ -115,7 +115,6 @@ def findInAsist(user):
   return False
 
 def removeUser(update: Update, context: CallbackContext):
-  query = update.callback_query
   words = update.message['text'].split()
   message = "Debe insertar el nombre del usuario"
   if len(words)>1:    
@@ -130,11 +129,6 @@ def removeUser(update: Update, context: CallbackContext):
       message = "El usuario \""+words+"\" no existe"
   update.message.reply_text(message)
   
-
-
-
-    
-
 
 
 ############################# Handlers #########################################
