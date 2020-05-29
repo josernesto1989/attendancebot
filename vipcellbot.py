@@ -1,11 +1,16 @@
 #bot = telegram.Bot('870389483:AAE6i7fBhPR88g_OL363CMx7_hp9KkUu3dQ')
 #!/usr/bin/python3
+import os
 from telegram.ext import Updater
 from telegram import Update
 from telegram.ext import CallbackContext
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 ############################### Bot ############################################
+
+onServer=True
+PORT = int(os.environ.get('PORT', 5000))
+TOKEN = '870389483:AAE6i7fBhPR88g_OL363CMx7_hp9KkUu3dQ'
 
 asistencia = [
 ['Jose','A'],
@@ -128,18 +133,27 @@ def removeUser(update: Update, context: CallbackContext):
   
 
 
-############################# Handlers #########################################
-updater = Updater('870389483:AAE6i7fBhPR88g_OL363CMx7_hp9KkUu3dQ', use_context=True)
+def main():
+  ############################# Handlers #########################################
+  updater = Updater(TOKEN, use_context=True)
 
-dp = updater.dispatcher
+  dp = updater.dispatcher
 
-dp.add_handler(CommandHandler('start', start))
-dp.add_handler(CommandHandler('asist', asist))
-dp.add_handler(CallbackQueryHandler(changeAsist, pattern='chAsist'))
-dp.add_handler(CallbackQueryHandler(printAsistencia, pattern='endAsist'))
-dp.add_handler(CommandHandler('adduser',addUser))
-dp.add_handler(CommandHandler('removeuser',removeUser))
+  dp.add_handler(CommandHandler('start', start))
+  dp.add_handler(CommandHandler('asist', asist))
+  dp.add_handler(CallbackQueryHandler(changeAsist, pattern='chAsist'))
+  dp.add_handler(CallbackQueryHandler(printAsistencia, pattern='endAsist'))
+  dp.add_handler(CommandHandler('adduser',addUser))
+  dp.add_handler(CommandHandler('removeuser',removeUser))
 
-updater.start_polling()
-updater.idle()
-################################################################################
+  updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=TOKEN)
+  updater.bot.setWebhook('https://vipcell-bot.herokuapp.com/' + TOKEN)
+
+  updater.start_polling()
+  updater.idle()
+  ################################################################################
+
+if __name__ == '__main__':
+    main()
