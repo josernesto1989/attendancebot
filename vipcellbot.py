@@ -20,13 +20,12 @@ asistencia = [
 ['Ronald','A'],
 ['Tania','A'],
 ['Michel','A'],
-['Keila','A'],
+['Yaneisi','A'],
 ['Alejandro','A'],
 ['Reinier ON','A'],
 ['Yandy','A'],
 ['Fidel D.','A'],
-['Andres','A'],
-#['Luis R.','A']
+['Andres','A']
 ]
 posAsistencia = 0
 isFirst = True
