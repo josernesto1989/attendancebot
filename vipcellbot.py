@@ -6,11 +6,14 @@ from telegram import Update
 from telegram.ext import CallbackContext
 from telegram.ext import CommandHandler, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from dbhelper import DBHelper
 ############################### Bot ############################################
 
 onServer=True
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = '870389483:AAE6i7fBhPR88g_OL363CMx7_hp9KkUu3dQ'
+
+db = DBHelper()
 
 asistencia = [
 ['Jose','A'],
