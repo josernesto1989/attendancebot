@@ -14,22 +14,26 @@ PORT = int(os.environ.get('PORT', 5000))
 TOKEN = '870389483:AAE6i7fBhPR88g_OL363CMx7_hp9KkUu3dQ'
 
 db = DBHelper()
+asistencia = []
+names = db.get_items()
+for x in names:
+  asistencia.append([x,'A'])
 
-asistencia = [
-['Jose','A'],
-['Alayn','A'],
-['Pedro','A'],
-['Osmanys','A'],
-['Ronald','A'],
-['Tania','A'],
-['Michel','A'],
-['Yaneisi','A'],
-['Alejandro','A'],
-['Reinier ON','A'],
-['Yandy','A'],
-['Fidel D.','A'],
-['Andres','A']
-]
+# asistencia = [
+# ['Jose','A'],
+# ['Alayn','A'],
+# ['Pedro','A'],
+# ['Osmanys','A'],
+# ['Ronald','A'],
+# ['Tania','A'],
+# ['Michel','A'],
+# ['Yaneisi','A'],
+# ['Alejandro','A'],
+# ['Reinier ON','A'],
+# ['Yandy','A'],
+# ['Fidel D.','A'],
+# ['Andres','A']
+# ]
 posAsistencia = 0
 isFirst = True
 
@@ -109,6 +113,7 @@ def addUser(update: Update, context: CallbackContext):
       message = "Ya existe el usuario \""+words+"\""
     else:
       asistencia.append([words,'A'])
+      db.add_item(words)
       message = "El usuario \""+words+"\" ha sido agregado"
   update.message.reply_text(message)
 
