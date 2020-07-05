@@ -26,4 +26,4 @@ class DBHelper:
     def get_items(self):
         print('select')
         stmt = "SELECT nombre FROM persona"
-        return [x[0] for x in self.conn.execute(stmt)]
+        return ['Ernesto','Alayn'] #[x[0] for x in self.conn.execute(stmt)]
