@@ -15,7 +15,7 @@ TOKEN = '870389483:AAE6i7fBhPR88g_OL363CMx7_hp9KkUu3dQ'
 
 db = DBHelper()
 asistencia = []
-# names = db.get_items()
+names = db.get_items()
 # for x in names:
 #   asistencia.append([x,'A'])
 
