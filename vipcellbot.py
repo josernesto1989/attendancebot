@@ -18,8 +18,8 @@ asistencia = []
 print('antes select')
 names = db.get_items()
 print('despues select')
-# for x in names:
-#   asistencia.append([x,'A'])
+for x in names:
+  asistencia.append([x,'A'])
 
 # asistencia = [
 # ['Jose','A'],
