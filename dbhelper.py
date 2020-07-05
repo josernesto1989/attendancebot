@@ -24,5 +24,6 @@ class DBHelper:
         self.conn.commit()
 
     def get_items(self):
+        print('select')
         stmt = "SELECT nombre FROM persona"
         return [x[0] for x in self.conn.execute(stmt)]
