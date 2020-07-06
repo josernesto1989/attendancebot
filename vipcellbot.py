@@ -103,10 +103,10 @@ def printAsistencia(update, context):
 
 def help(update: Update, context: CallbackContext):
   text = "Los comandos disponibles son:\n"
-  text = text + "/help para este menú"
-  text = text + "/adduser <nombre> para adicionar usuario"
-  text = text + "/removeuser <nombre> para eliminar usuario"
-  text = text + "/asist para chequear asistencia"
+  text = text + "\n/help para este menú"
+  text = text + "\n/adduser <nombre> para adicionar usuario"
+  text = text + "\n/removeuser <nombre> para eliminar usuario"
+  text = text + "\n/asist para chequear asistencia"
   update.message.reply_text(text)
 
 ########################### GESTION DE USUARIOS #################################
@@ -120,7 +120,7 @@ def addUser(update: Update, context: CallbackContext):
       message = "Ya existe el usuario \""+words+"\""
     else:
       asistencia.append([words,'A'])
-      # db.add_item(words)
+      db.add_item(words)
       message = "El usuario \""+words+"\" ha sido agregado"
   update.message.reply_text(message)
 
@@ -140,7 +140,7 @@ def removeUser(update: Update, context: CallbackContext):
       for i in range(len(asistencia)):
         if asistencia[i][0] == words:
           asistencia.pop(words)
-          # db.delete_item()
+          db.delete_item()
       message = "El usuario \""+words+"\" fue eliminado"
     else:
       message = "El usuario \""+words+"\" no existe"
