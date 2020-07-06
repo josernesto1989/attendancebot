@@ -140,7 +140,7 @@ def removeUser(update: Update, context: CallbackContext):
       for i in range(len(asistencia)):
         if asistencia[i][0] == words:
           asistencia.pop(words)
-          db.delete_item()
+          db.delete_item(words)
       message = "El usuario \""+words+"\" fue eliminado"
     else:
       message = "El usuario \""+words+"\" no existe"
