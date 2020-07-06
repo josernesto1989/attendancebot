@@ -5,6 +5,7 @@ class DBHelper:
     def __init__(self, dbname="todo.sqlite"):
         self.dbname = dbname
         self.conn = sqlite3.connect(dbname)
+        self.setup()
 
     def setup(self):
         stmt = "CREATE TABLE IF NOT EXISTS persona ( id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL, nombre VARCHAR (255) NOT NULL UNIQUE);"
@@ -26,4 +27,4 @@ class DBHelper:
     def get_items(self):
         print('select')
         stmt = "SELECT nombre FROM persona"
-        return ['Ernesto','Alayn'] #[x[0] for x in self.conn.execute(stmt)]
+        return [x[0] for x in self.conn.execute(stmt)]
