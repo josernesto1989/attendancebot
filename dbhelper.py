@@ -19,7 +19,7 @@ class DBHelper:
         self.conn.commit()
 
     def delete_item(self, item_text):
-        stmt = "DELETE FROM persona WHERE nombre = (?)"
+        stmt = "DELETE FROM persona WHERE persona.nombre = (?)"
         args = (item_text, )
         self.conn.execute(stmt, args)
         self.conn.commit()
