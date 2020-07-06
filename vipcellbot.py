@@ -137,8 +137,9 @@ def removeUser(update: Update, context: CallbackContext):
     x, words = words
     words = ''.join(words)
     if findInAsist(words):
-      # for i in range(len(asistencia)):
-      #   if asistencia[i][0] == words:
+      for i in range(len(asistencia)):
+        if asistencia[i][0] == words:
+          pass
       #     asistencia.pop(words)
       #     # db.delete_item(words)
       message = "El usuario \""+words+"\" fue eliminado"
