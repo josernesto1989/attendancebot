@@ -101,6 +101,13 @@ def printAsistencia(update, context):
                         message_id=query.message.message_id,
                         text=output)
 
+def help(update: Update, context: CallbackContext):
+  text = "Los comandos disponibles son:\n"
+  text = text + "/help para este menú"
+  text = text + "/adduser <nombre> para adicionar usuario"
+  text = text + "/removeuser <nombre> para eliminar usuario"
+  text = text + "/asist para chequear asistencia"
+  update.message.reply_text(text)
 
 ########################### GESTION DE USUARIOS #################################
 def addUser(update: Update, context: CallbackContext):
@@ -148,6 +155,7 @@ def main():
   dp = updater.dispatcher
 
   dp.add_handler(CommandHandler('start', start))
+  dp.add_handler(CommandHandler('help', help))
   dp.add_handler(CommandHandler('asist', asist))
   dp.add_handler(CallbackQueryHandler(changeAsist, pattern='chAsist'))
   dp.add_handler(CallbackQueryHandler(printAsistencia, pattern='endAsist'))
