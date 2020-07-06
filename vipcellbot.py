@@ -137,11 +137,12 @@ def removeUser(update: Update, context: CallbackContext):
     x, words = words
     words = ''.join(words)
     if findInAsist(words):
-      for i in range(len(asistencia)):
-        if asistencia[i][0] == words:
-          asistencia.pop(words)
-          # db.delete_item(words)
+      # for i in range(len(asistencia)):
+      #   if asistencia[i][0] == words:
+      #     asistencia.pop(words)
+      #     # db.delete_item(words)
       message = "El usuario \""+words+"\" fue eliminado"
+      pass
     else:
       message = "El usuario \""+words+"\" no existe"
   update.message.reply_text(message)
