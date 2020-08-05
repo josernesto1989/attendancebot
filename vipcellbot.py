@@ -28,6 +28,7 @@ asistencia = [
 ['Tania','A'],
 ['Michel','A'],
 ['Yaneisi','A'],
+['Lili','A'],
 ['Alejandro','A'],
 ['Reinier ON','A'],
 ['Yandy','A'],
